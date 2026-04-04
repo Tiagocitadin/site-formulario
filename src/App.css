@@ -1,0 +1,356 @@
+/* Isso garante que o fundo ocupe a tela toda e centralize o conteúdo */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f0f2f5;
+  /* Um cinza bem clarinho e elegante */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  /* Alinha ao topo para começar com margem */
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* O CARD (Container) */
+.container {
+  width: 92%;
+  /* Quase toda a largura no celular */
+  max-width: 450px;
+  /* Largura fixa no computador */
+  background: white;
+
+  /* MARGEM EM CIMA E EMBAIXO */
+  margin: 30px auto;
+  /* 30px de respiro em cima e embaixo */
+
+  min-height: 85vh;
+  /* Não ocupa a tela toda, deixa o respiro embaixo */
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 24px;
+  /* Bordas bem arredondadas (estilo moderno) */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+  /* Sombra suave para flutuar */
+  overflow: hidden;
+  /* Garante que nada saia das bordas arredondadas */
+  position: relative;
+}
+
+/* HEADER E PROGRESSO - ATUALIZADO */
+.topo {
+  display: flex;
+  justify-content: space-between;
+  /* Joga o Voltar para a esquerda e o X para a direita */
+  align-items: center;
+  width: 100%;
+  /* Garante que use a largura total do container */
+  padding: 10px 10px;
+  /* Espaçamento interno em vez de margins fixas */
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+/* Agora você configura cada um individualmente */
+.btn-voltar {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ccc;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.btn-voltar:hover {
+  color: #4a6cf7 !important;
+}
+
+.btn-fechar {
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ccc;
+  padding: 5px 10px;
+  /* Área de clique maior para o dedo no celular */
+  transition: all 0.2s;
+}
+
+.btn-fechar:hover {
+  color: #d93025;
+  /* Fica vermelhinho ao passar o mouse */
+}
+
+/* A BARRA continua logo abaixo do topo */
+.barra {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+
+}
+
+.barra div {
+  height: 6px;
+  flex: 1;
+  background: #eee;
+  border-radius: 10px;
+  transition: all 0.4s ease;
+}
+
+.barra .ativo {
+  /* Gradiente mais moderno baseado na sua logo */
+  background: linear-gradient(90deg, #a6abc1, #a3cdac);
+}
+
+.foto {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 10px auto 20px;
+  display: block;
+
+  /* AJUSTE AQUI: Prioriza o topo da imagem */
+  object-fit: cover;
+  object-position: top;
+  /* Isso garante que a cabeça não seja cortada */
+
+  border: 3px solid #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+h2 {
+  text-align: center;
+  font-size: 20px;
+  line-height: 1.4;
+  margin-bottom: 25px;
+  color: #1a1a1a;
+  padding: 0 10px;
+}
+
+
+/* INPUTS E OPÇÕES */
+.input-estilizado {
+  /* Altera de 100% para 90% ou 95% para criar a margem lateral */
+  width: 95%;
+
+  /* Centraliza o input dentro do container */
+  margin: 8px auto;
+  display: block;
+
+  padding: 14px 20px;
+  /* Aumentei de 5px para 14px; 5px era muito apertado para digitar */
+  border: 1.5px solid #eee;
+  border-radius: 16px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+
+  /* Mantém o padding dentro do cálculo da largura */
+  box-sizing: border-box;
+
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input-estilizado:focus {
+  border-color: #4a6cf7;
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgba(74, 108, 247, 0.1);
+}
+
+/* Alternativas do quiz */
+.option {
+  /* Altera para não ocupar 100%, criando a margem lateral */
+  width: 95%;
+
+  /* Centraliza a opção horizontalmente */
+  margin: 10px auto;
+  display: block;
+
+  border: 1.5px solid #eee;
+  padding: 10px 20px;
+  border-radius: 16px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  background: #fff;
+
+  /* Garante que o padding não "estique" a largura para fora */
+  box-sizing: border-box;
+  text-align: left;
+  /* Mantém o texto alinhado à esquerda dentro da caixa */
+}
+
+/* Efeito de clique no celular */
+.option:active {
+  transform: scale(0.97);
+  /* Um pouco mais de pressão no clique */
+  background: #f5f7ff;
+}
+
+.selected {
+  background: #ab73a8 !important;
+  color: white !important;
+  border-color: #0b0b0b !important;
+  box-shadow: 0 4px 12px rgba(74, 108, 247, 0.3);
+}
+
+/* BOTÕES PRINCIPAIS (Versão Profissional) */
+button,
+.botao {
+  width: 85%;
+  max-width: 320px;
+  /* O segredo: padding vertical maior e horizontal menor */
+  padding: 14px 24px;
+  margin: 20px auto 15px;
+
+  /* Arredondamento moderno (não chega a ser pílula, mas é suave) */
+  border-radius: 15px;
+  border: none;
+
+  /* Cor: Um azul levemente mais profundo e elegante */
+  background: #9370DB;
+  color: white;
+
+  /* Tipografia: 16px ou 17px é o padrão de apps de luxo. 20px é muito grande. */
+  font-size: 16px;
+  font-weight: 600;
+  /* Seminegrito é mais elegante que negrito total */
+  letter-spacing: 0.7px;
+  /* Espaçamento sutil entre letras */
+
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  transition: all 0.25s ease;
+
+  /* Sombra: Mais difusa e menos saturada */
+  box-shadow: 0 4px 14px rgba(58, 92, 204, 0.25);
+}
+
+/* Efeito Hover (Desktop) */
+@media (hover: hover) {
+
+  button:hover,
+  .botao:hover {
+    background: #7B68EE;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(58, 92, 204, 0.35);
+  }
+}
+
+/* Efeito de Clique (Feedback tátil) */
+button:active,
+.botao:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 5px rgba(58, 92, 204, 0.2);
+}
+
+/* TELA FINAL ESTILIZADA */
+.final-content {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.icon {
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+.titulo {
+  font-weight: 800;
+  font-size: 20px;
+  color: black;
+  margin-bottom: 15px;
+}
+
+.nao {
+  font-weight: 800;
+  font-size: 20px;
+  color: red;
+  margin-bottom: 15px;
+}
+
+.texto {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #5f6368;
+  margin-bottom: 30px;
+  padding: 20px 20px;
+}
+
+.cortesia {
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  color: #cc4848;
+}
+
+/* AJUSTES RESPONSIVOS */
+@media (max-height: 600px) {
+  .container {
+    padding: 15px;
+  }
+
+  .foto {
+    width: 60px;
+    height: 60px;
+  }
+
+  h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .option {
+    padding: 12px 15px;
+    margin: 8px 0;
+  }
+}
+
+/* MENSAGEM DE ERRO ESTILIZADA */
+.erro-msg {
+  color: #d93025;
+  /* Vermelho de atenção do Google */
+  font-size: 12px;
+  font-weight: 500;
+  margin: -4px 0 8px 15px;
+  /* Ajuste para grudar no input acima */
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  animation: fadeIn 0.3s ease;
+  /* Efeito suave ao aparecer */
+}
+
+/* Animação para a mensagem não aparecer "seca" */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ajuste no input quando houver erro */
+.input-estilizado.erro {
+  border-color: #d93025 !important;
+  background-color: #fff8f8;
+  /* Fundo levemente rosado */
+}
