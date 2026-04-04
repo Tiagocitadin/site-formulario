@@ -1,8 +1,18 @@
 import React from 'react';
 import './Home.css';
 
-function Home({ aoIniciar }) {
+function Home() {
     const URL_INSTAGRAM = import.meta.env.VITE_INSTAGRAM_URL;
+    const URL_AGENDA = import.meta.env.VITE_CALENDAR_URL;
+
+    // Função para abrir o link
+    const abrirAgenda = () => {
+        if (URL_AGENDA) {
+            window.open(URL_AGENDA, '_blank', 'noopener,noreferrer');
+        } else {
+            console.warn("URL da agenda não configurada no .env");
+        }
+    };
 
     return (
         <div className="home-container">
@@ -13,6 +23,15 @@ function Home({ aoIniciar }) {
 
             <main className="home-content">
                 <div className="home-text">
+                    {/* SEÇÃO DE AGENDAMENTO NO TOPO PARA MÁXIMO DESTAQUE */}
+                    <div className="home-actions-top">
+                        <button className="btn-principal pulse-effect" onClick={abrirAgenda}>
+                            <span className="btn-icon">✨</span>
+                            Agendar Minha Sessão Experimental
+                        </button>
+                        <p className="subtext-top">Vagas limitadas para este mês</p>
+                    </div>
+
                     <span className="tagline">Terapia Individual Online</span>
                     <h1>Recupere sua paz e o equilíbrio das suas emoções.</h1>
                     <p>
@@ -20,13 +39,12 @@ function Home({ aoIniciar }) {
                         relacionamentos e os desafios da maternidade.
                     </p>
 
-
                     <div className="home-video-wrapper">
                         <video
-                            key="video-home-bea" /* Isso força o React a renderizar o vídeo do zero */
+                            key="video-home-bea"
                             controls
                             playsInline
-                            preload="auto" /* Carrega o vídeo assim que a página abre */
+                            preload="auto"
                             poster="/capa-video.jpg"
                             className="home-video"
                         >
@@ -34,26 +52,15 @@ function Home({ aoIniciar }) {
                             Seu navegador não suporta vídeos.
                         </video>
 
-                        {/* Detalhe flutuante para dar profundidade */}
                         <div className="video-label">
                             <span>▶ Assistir Apresentação</span>
                         </div>
-                    </div>
-
-                    <div className="home-actions">
-                        <button className="btn-principal" onClick={aoIniciar}>
-                            Agendar Sessão Experimental
-                        </button>
-                        <p className="subtext">Leva menos de 2 minutos para iniciar.</p>
                     </div>
                 </div>
 
                 <div className="home-image">
                     <img src="/foto.jpg" alt="Terapeuta Bea Paes" />
-                    <div className="exp-badge">
-                        <strong>+500</strong>
-                        <span>Vidas Transformadas</span>
-                    </div>
+
                 </div>
             </main>
 
