@@ -18,7 +18,12 @@ function Home() {
         <div className="home-container">
             <nav className="home-nav">
                 <span className="logo">Bea Paes</span>
-                <a href={URL_INSTAGRAM} target="_blank" rel="noreferrer" className="nav-link">Instagram</a>
+                <a href={URL_INSTAGRAM} target="_blank" rel="noreferrer" className="nav-link">
+                    <img src="/instagram.png"
+                        alt="instagram"
+                        style={{ width: '20px', height: '20px', marginRight: '8px' }} />
+                    Instagram
+                </a>
             </nav>
 
             <main className="home-content">

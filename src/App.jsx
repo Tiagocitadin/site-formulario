@@ -27,7 +27,7 @@ const perguntas = [
 
 function App() {
   // 1. COMEÇA PELOS DADOS
-  const [etapa, setEtapa] = useState('dados'); 
+  const [etapa, setEtapa] = useState('dados');
   const [atual, setAtual] = useState(0);
   const [dadosUsuario, setDadosUsuario] = useState({ nome: "", email: "", telefone: "" });
   const [respostas, setRespostas] = useState([]);
@@ -49,12 +49,23 @@ function App() {
   };
 
   const iniciarQuiz = () => {
+    // Validação: Nome não pode estar vazio e telefone precisa de 11 dígitos
     const nErro = !dadosUsuario.nome.trim();
     const tErro = dadosUsuario.telefone.replace(/\D/g, "").length < 11;
-    if (nErro || tErro) {
-      setErros({ nome: nErro, telefone: tErro });
-      return;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    const eErro = dadosUsuario.email.trim() !== "" && !emailRegex.test(dadosUsuario.email);
+
+    if (nErro || tErro || eErro) {
+      setErros({
+        nome: nErro,
+        telefone: tErro,
+        email: eErro
+      });
+      return; // Para aqui e mostra os erros
     }
+
+    setErros({}); // Limpa erros se tudo estiver ok
     setEtapa('quiz');
   };
 
@@ -72,7 +83,7 @@ function App() {
     } else {
       // 2. AO TERMINAR O QUIZ, VAI PARA A PÁGINA DE "ATENÇÃO" (FINAL)
       enviar(novasRespostas);
-      setEtapa('final'); 
+      setEtapa('final');
     }
   };
 
@@ -87,7 +98,11 @@ function App() {
     res.forEach((r, i) => params.append(`r${i + 1}`, r));
 
     try {
-      await fetch(URL_GOOGLE, { method: "POST", mode: "no-cors", body: params });
+      await fetch(URL_GOOGLE, {
+        method: "POST",
+        mode: "no-cors",
+        body: params
+      });
     } catch (err) {
       console.error("Erro no envio:", err);
     } finally {
@@ -128,22 +143,53 @@ function App() {
         <div id="tela-dados">
           <img src="/foto.jpg" className="foto" alt="Bea Paes" />
           <h2>Para começar, me conte um pouco sobre você.</h2>
+
+          {/* Campo Nome */}
+          <div className="input-group">
+            <input
+              type="text"
+              placeholder="Nome"
+              /* Aqui aplicamos a classe .erro se houver erro no nome */
+              className={`input-estilizado ${erros.nome ? 'erro' : ''}`}
+              value={dadosUsuario.nome}
+              onChange={(e) => {
+                setDadosUsuario({ ...dadosUsuario, nome: e.target.value });
+                if (erros.nome) setErros({ ...erros, nome: false });
+              }}
+            />
+            {erros.nome && <span className="erro-msg">⚠️ Campo obrigatório</span>}
+          </div>
+
+          {/* Campo Telefone */}
+          <div className="input-group">
+            <input
+              type="tel"
+              placeholder="(99)99999-9999"
+              /* Aqui aplicamos a classe .erro se houver erro no telefone */
+              className={`input-estilizado ${erros.telefone ? 'erro' : ''}`}
+              value={dadosUsuario.telefone}
+              onChange={(e) => {
+                handleTelefone(e);
+                if (erros.telefone) setErros({ ...erros, telefone: false });
+              }}
+            />
+            {erros.telefone && <span className="erro-msg">⚠️ Telefone obrigatório (11 dígitos)</span>}
+          </div>
+
+          {/* Campo E-mail (Opcional) */}
           <input
-            type="text" placeholder="Nome" className="input-estilizado"
-            value={dadosUsuario.nome}
-            onChange={(e) => setDadosUsuario({ ...dadosUsuario, nome: e.target.value })}
-            style={{ borderColor: erros.nome ? '#d93025' : '#eee' }}
+            type="email"
+            placeholder="E-mail (opcional)"
+            className={`input-estilizado ${erros.email ? 'erro' : ''}`}
+            value={dadosUsuario.email}
+            onChange={(e) => {
+              setDadosUsuario({ ...dadosUsuario, email: e.target.value });
+              if (erros.email) setErros({ ...erros, email: false });
+            }}
           />
-          <input
-            type="tel" placeholder="(99)99999-9999" className="input-estilizado"
-            value={dadosUsuario.telefone} onChange={handleTelefone}
-            style={{ borderColor: erros.telefone ? '#d93025' : '#eee' }}
-          />
-          <input
-            type="email" placeholder="E-mail (opcional)" className="input-estilizado"
-            value={dadosUsuario.email} onChange={(e) => setDadosUsuario({ ...dadosUsuario, email: e.target.value })}
-          />
-          <button onClick={iniciarQuiz} style={{ marginTop: '30px' }}>Iniciar</button>
+          {erros.email && <span className="erro-msg">⚠️ Formato de e-mail inválido</span>}
+
+          <button onClick={iniciarQuiz}>Iniciar</button>
         </div>
       )}
 
@@ -171,10 +217,10 @@ function App() {
             Atenção: Sua sessão <br /> <strong className="nao">NÃO</strong> está agendada ainda.
           </div>
           <div className="texto">
-            Para garantir sua sessão <strong className="cortesia">cortesia</strong>, escolha o melhor horário para você. Como as vagas são limitadas, 
+            Para garantir sua sessão <strong className="cortesia">cortesia</strong>, escolha o melhor horário para você. Como as vagas são limitadas,
             recomendo agendar agora para assegurar seu atendimento.
           </div>
-          
+
           <button className="botao" onClick={() => setEtapa('inicio')}>
             CONHECER BEA PAES E AGENDAR!
           </button>
