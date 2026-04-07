@@ -25,7 +25,7 @@ body {
   /* Quase toda a largura no celular */
   max-width: 450px;
   /* Largura fixa no computador */
-  background: white;
+  background: #F1F4F0;
 
   /* MARGEM EM CIMA E EMBAIXO */
   margin: 30px auto;
@@ -71,7 +71,9 @@ body {
 }
 
 .btn-voltar:hover {
-  color: #4a6cf7 !important;
+  /* Substitui o azul pelo Verde Sálvia (#93a384) */
+  color: #93a384 !important;
+  transition: color 0.2s ease;
 }
 
 .btn-fechar {
@@ -141,94 +143,96 @@ h2 {
 
 /* INPUTS E OPÇÕES */
 .input-estilizado {
-  /* Altera de 100% para 90% ou 95% para criar a margem lateral */
-  width: 95%;
-
-  /* Centraliza o input dentro do container */
+  width: 90%;
   margin: 8px auto;
   display: block;
-
-  padding: 14px 20px;
-  /* Aumentei de 5px para 14px; 5px era muito apertado para digitar */
-  border: 1.5px solid #eee;
+  padding: 12px 20px;
+  border: 1.5px solid #ccd5c9;
   border-radius: 16px;
   font-size: 16px;
-  background-color: #f9f9f9;
-
-  /* Mantém o padding dentro do cálculo da largura */
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(74, 88, 68, 0.05);
   box-sizing: border-box;
-
   outline: none;
   transition: all 0.3s ease;
+  color: #4A5844
 }
 
 .input-estilizado:focus {
-  border-color: #4a6cf7;
+  border-color: #4A5844;
   background-color: #fff;
-  box-shadow: 0 0 0 4px rgba(74, 108, 247, 0.1);
+  box-shadow: 0 0 0 4px rgba(74, 88, 68, 0.15);
+  transform: translateY(-1px);
+}
+
+.input-estilizado::placeholder {
+  color: #a0ac9b;
 }
 
 /* Alternativas do quiz */
 .option {
-  /* Altera para não ocupar 100%, criando a margem lateral */
-  width: 95%;
-
-  /* Centraliza a opção horizontalmente */
+  width: 90%;
   margin: 10px auto;
   display: block;
 
-  border: 1.5px solid #eee;
-  padding: 10px 20px;
+  /* MUDANÇA: Borda em verde sálvia médio para definir a caixa */
+  border: 1.5px solid #ccd5c9; 
+  padding: 12px 20px; /* Aumentei um pouco o respiro vertical */
   border-radius: 16px;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 17px; /* 17px é mais elegante para textos longos de quiz */
   font-weight: 500;
   transition: all 0.2s ease;
-  background: #fff;
+  background: #ffffff; /* Branco puro para saltar do fundo do container */
 
-  /* Garante que o padding não "estique" a largura para fora */
   box-sizing: border-box;
   text-align: left;
-  /* Mantém o texto alinhado à esquerda dentro da caixa */
+  color: #4A5844; /* Texto no seu verde escuro principal */
+  
+  /* ADIÇÃO: Sombra sutil para dar volume, igual fizemos nos inputs */
+  box-shadow: 0 2px 6px rgba(74, 88, 68, 0.05);
 }
 
-/* Efeito de clique no celular */
+/* Efeito de Hover (Desktop) */
+@media (hover: hover) {
+  .option:hover {
+    border-color: #93a384; /* Verde sálvia do logo */
+    background-color: #f8faf7; /* Um toque de verde quase branco */
+    transform: translateX(4px); /* Desloca levemente para a direita, efeito premium */
+  }
+}
+
+/* Efeito de clique e seleção */
 .option:active {
-  transform: scale(0.97);
-  /* Um pouco mais de pressão no clique */
-  background: #f5f7ff;
+  transform: scale(0.98);
+  background: #f1f4f0; /* O verde clarinho do container */
 }
 
+/* MUDANÇA: Quando a opção estiver selecionada */
 .selected {
-  background: #ab73a8 !important;
+  background: #4A5844 !important; /* Seu verde escuro */
   color: white !important;
-  border-color: #0b0b0b !important;
-  box-shadow: 0 4px 12px rgba(74, 108, 247, 0.3);
+  border-color: #364132 !important;
+  box-shadow: 0 4px 12px rgba(74, 88, 68, 0.25) !important;
 }
-
 /* BOTÕES PRINCIPAIS (Versão Profissional) */
 button,
 .botao {
   width: 85%;
   max-width: 320px;
-  /* O segredo: padding vertical maior e horizontal menor */
   padding: 14px 24px;
   margin: 20px auto 15px;
 
-  /* Arredondamento moderno (não chega a ser pílula, mas é suave) */
   border-radius: 15px;
   border: none;
 
-  /* Cor: Um azul levemente mais profundo e elegante */
-  background: #9370DB;
+  /* MUDANÇA: Verde Escuro Principal */
+  background: #4A5844;
   color: white;
 
-  /* Tipografia: 16px ou 17px é o padrão de apps de luxo. 20px é muito grande. */
   font-size: 16px;
   font-weight: 600;
-  /* Seminegrito é mais elegante que negrito total */
   letter-spacing: 0.7px;
-  /* Espaçamento sutil entre letras */
 
   cursor: pointer;
   text-align: center;
@@ -236,18 +240,19 @@ button,
   display: block;
   transition: all 0.25s ease;
 
-  /* Sombra: Mais difusa e menos saturada */
-  box-shadow: 0 4px 14px rgba(58, 92, 204, 0.25);
+  /* MUDANÇA: Sombra baseada no tom verde para não parecer cinza/azulada */
+  box-shadow: 0 4px 14px rgba(74, 88, 68, 0.3);
 }
 
 /* Efeito Hover (Desktop) */
 @media (hover: hover) {
-
   button:hover,
   .botao:hover {
-    background: #7B68EE;
+    /* MUDANÇA: Verde Oliva mais claro para o Hover */
+    background: #5D6D56;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(58, 92, 204, 0.35);
+    /* MUDANÇA: Sombra mais intensa no hover */
+    box-shadow: 0 6px 20px rgba(74, 88, 68, 0.4);
   }
 }
 
@@ -255,7 +260,8 @@ button,
 button:active,
 .botao:active {
   transform: scale(0.97);
-  box-shadow: 0 2px 5px rgba(58, 92, 204, 0.2);
+  /* MUDANÇA: Sombra reduzida no clique para efeito de "pressionado" */
+  box-shadow: 0 2px 5px rgba(74, 88, 68, 0.2);
 }
 
 /* TELA FINAL ESTILIZADA */

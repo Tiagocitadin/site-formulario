@@ -1,12 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Montserrat:wght@300;400;600;700&display=swap');
 
+/* VARIÁVEIS DE CORES PARA FACILITAR */
+:root {
+  --verde-escuro: #4A5844;
+  --verde-claro: #93A384;
+  --verde-fundo: #F1F4F0;
+  --texto-principal: #2c2c2c;
+  --texto-suave: #555555;
+}
+
 .home-container {
   min-height: 100vh;
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
   font-family: 'Montserrat', sans-serif;
-  color: #1a1a1a;
+  color: var(--texto-principal);
 }
 
 /* NAVBAR */
@@ -15,31 +24,35 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--verde-fundo);
 }
 
 .logo { 
   font-family: 'Cormorant Garamond', serif;
   font-weight: 600; 
   font-size: 30px; 
-  color: #3d2b56; 
+  color: var(--verde-escuro); 
   text-transform: uppercase;
   letter-spacing: 2px;
 }
 
 .nav-link { 
   text-decoration: none; 
-  color: #1a1a1a; 
+  color: var(--texto-principal); 
   font-weight: 600;
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   border-bottom: 2px solid transparent;
   transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .nav-link:hover {
-  border-bottom: 2px solid #6F4E9E;
+  color: var(--verde-claro);
+  border-bottom: 2px solid var(--verde-claro);
 }
 
 /* CONTEÚDO - GRID SYSTEM */
@@ -67,11 +80,12 @@
 }
 
 .btn-principal {
-  background: linear-gradient(135deg, #3d2b56 0%, #6F4E9E 100%);
+  /* Gradiente usando os dois tons de verde do logo */
+  background: linear-gradient(135deg, var(--verde-escuro) 0%, var(--verde-claro) 100%);
   color: #fff;
   padding: 20px 40px;
   border: none;
-  border-radius: 50px; /* Arredondado para destacar do resto quadrado */
+  border-radius: 50px; 
   font-size: 14px;
   font-weight: 700;
   cursor: pointer;
@@ -81,14 +95,17 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  box-shadow: 0 10px 30px rgba(61, 43, 86, 0.3);
+  box-shadow: 0 10px 30px rgba(74, 88, 68, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-principal:hover { 
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 15px 40px rgba(111, 78, 158, 0.4);
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 8px 25px rgba(74, 88, 68, 0.35);
   letter-spacing: 3px;
 }
+
+
 
 .btn-icon {
   font-size: 18px;
@@ -100,24 +117,24 @@
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #6F4E9E;
+  color: var(--verde-claro);
   font-weight: 700;
 }
 
-/* EFEITO DE PULSO SUTIL */
+/* EFEITO DE PULSO VERDE */
 .pulse-effect {
   animation: pulse-soft 2.5s infinite ease-in-out;
 }
 
 @keyframes pulse-soft {
-  0% { box-shadow: 0 0 0 0 rgba(111, 78, 158, 0.5); }
-  70% { box-shadow: 0 0 0 15px rgba(111, 78, 158, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(111, 78, 158, 0); }
+  0% { box-shadow: 0 0 0 0 rgba(147, 163, 132, 0.5); }
+  50% { box-shadow: 0 0 0 15px rgba(147, 163, 132, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(147, 163, 132, 0); }
 }
 
 /* TEXTOS DA HOME */
 .tagline { 
-  color: #6F4E9E; 
+  color: var(--verde-claro); 
   font-weight: 700; 
   text-transform: uppercase; 
   letter-spacing: 5px; 
@@ -134,13 +151,13 @@
   top: 50%;
   width: 40px;
   height: 1px;
-  background: #6F4E9E;
+  background: var(--verde-claro);
 }
 
 h1 { 
   font-family: 'Cormorant Garamond', serif;
   font-size: 62px; 
-  color: #2c2c2c; 
+  color: var(--verde-escuro); 
   margin: 0 0 30px; 
   line-height: 1.1; 
   font-weight: 600;
@@ -149,11 +166,11 @@ h1 {
 
 p { 
   font-size: 17px; 
-  color: #444; 
+  color: var(--texto-suave); 
   margin-bottom: 40px; 
   line-height: 1.8; 
   max-width: 500px;
-  border-left: 3px solid #f3effb;
+  border-left: 3px solid var(--verde-fundo);
   padding-left: 25px;
 }
 
@@ -173,7 +190,7 @@ p {
   left: -15px;
   width: 100%;
   height: 100%;
-  border: 1px solid #f3effb;
+  border: 1px solid var(--verde-fundo);
   z-index: -1;
 }
 
@@ -189,7 +206,7 @@ p {
   position: absolute;
   top: -10px;
   right: -10px;
-  background: #3d2b56;
+  background: var(--verde-escuro);
   color: white;
   padding: 8px 15px;
   font-size: 10px;
@@ -213,8 +230,9 @@ p {
   right: 10%;
   width: 70%;
   height: 80%;
-  border: 1px solid #6F4E9E;
+  border: 1px solid var(--verde-claro);
   z-index: -1;
+  opacity: 0.5;
 }
 
 .home-image img { 
@@ -225,7 +243,7 @@ p {
 
 /* FOOTER */
 .home-footer {
-  background-color: #ffffff;
+  background-color: var(--verde-fundo);
   padding: 100px 10% 40px;
 }
 
@@ -240,7 +258,7 @@ p {
   font-size: 9px;
   text-transform: uppercase;
   letter-spacing: 3px;
-  color: #9370DB;
+  color: var(--verde-claro);
   font-weight: 700;
   margin-bottom: 20px;
   display: block;
@@ -250,18 +268,16 @@ p {
   font-family: 'Cormorant Garamond', serif;
   font-size: 24px;
   font-style: italic;
-  color: #3d2b56;
+  color: var(--verde-escuro);
   max-width: 400px;
   border: none;
   padding: 0;
 }
 
-.brand .logo { font-size: 26px; }
-
 .contact .contact-value {
   margin-top: 15px;
   font-weight: 700;
-  color: #3d2b56;
+  color: var(--verde-escuro);
   font-size: 16px;
 }
 
@@ -270,7 +286,7 @@ p {
   justify-content: space-between;
   padding-top: 40px;
   font-size: 10px;
-  color: #ccc;
+  color: #8a9686; /* Cinza esverdeado */
 }
 
 /* RESPONSIVIDADE */
