@@ -1,5 +1,7 @@
 import React from 'react';
 import './Home.css';
+import { FaWhatsapp } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 
 function Home() {
     const URL_INSTAGRAM = import.meta.env.VITE_INSTAGRAM_URL;
@@ -38,10 +40,12 @@ function Home() {
                     </div>
 
                     <span className="tagline">Terapia Individual Online</span>
-                    <h1>Recupere sua paz e o equilíbrio das suas emoções.</h1>
+                    <h1>Pare de viver no limite emocional.
+                        Volte a se sentir em paz e no controle da sua vida.
+                    </h1>
                     <p>
-                        Um espaço seguro e acolhedor para você lidar com ansiedade,
-                        relacionamentos e os desafios da maternidade.
+                        Você não precisa enfrentar ansiedade, conflitos e sobrecarga sozinha(o).
+                        Aqui começa um processo real de mudança, com acolhimento e direção.
                     </p>
 
                     <div className="home-video-wrapper">
@@ -74,20 +78,31 @@ function Home() {
                     {/* Bloco 1: Manifesto */}
                     <div className="footer-block manifesto">
                         <span className="footer-label">Propósito</span>
-                        <p>Acolhimento clínico focado na saúde emocional e no resgate da paz interior.</p>
+                        <p>Guiar você no caminho de volta à sua paz interior e ao equilíbrio emocional.</p>
                     </div>
 
                     {/* Bloco 2: Identidade */}
-                    <div className="footer-block brand">
-                        <span className="logo">Bea Paes</span>
-                        <p>Terapeuta Online</p>
-                    </div>
+
 
                     {/* Bloco 3: Localização & Contato */}
                     <div className="footer-block contact">
-                        <span className="footer-label">Disponibilidade</span>
-                        <p>Atendimento Brasil</p>
-                        <p className="contact-value">(48) 99922-2343</p>
+                        <span className="footer-label">Começar minha Jornada</span>
+
+                        <p className="contact-item">
+                            <MdEmail className="icon" />
+                            beapaesterapeuta@gmail.com
+                        </p>
+
+                        <p className="contact-item">
+                            <FaWhatsapp className="icon" />
+                            <a
+                                href="https://wa.me/5548999975141?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações%20sobre%20o%20atendimento."
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                (48) 99997-5141
+                            </a>
+                        </p>
                     </div>
                 </div>
 

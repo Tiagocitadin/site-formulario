@@ -80,7 +80,6 @@
 }
 
 .btn-principal {
-  /* Gradiente usando os dois tons de verde do logo */
   background: linear-gradient(135deg, var(--verde-escuro) 0%, var(--verde-claro) 100%);
   color: #fff;
   padding: 20px 40px;
@@ -104,8 +103,6 @@
   box-shadow: 0 8px 25px rgba(74, 88, 68, 0.35);
   letter-spacing: 3px;
 }
-
-
 
 .btn-icon {
   font-size: 18px;
@@ -249,19 +246,26 @@ p {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1.5fr;
+  grid-template-columns: 1fr 1fr; /* 🔥 duas colunas iguais */
   margin-bottom: 80px;
   gap: 40px;
 }
 
 .footer-label {
-  font-size: 9px;
+  font-size: 15px;
   text-transform: uppercase;
   letter-spacing: 3px;
   color: var(--verde-claro);
   font-weight: 700;
   margin-bottom: 20px;
   display: block;
+}
+
+.footer-block p {
+  border: none;
+  padding-left: 0;
+  margin-left: 0;
+  max-width: 100%; /* 🔥 ESSENCIAL */
 }
 
 .manifesto p {
@@ -281,12 +285,38 @@ p {
   font-size: 16px;
 }
 
+/* 🔥 AJUSTES AQUI */
+.footer-block.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* volta pra esquerda */
+  text-align: left;
+}
+
+.footer-block.contact p {
+  margin-bottom: 0; /* diminui espaço entre email e whatsapp */
+  
+
+}
+
+.contact-item {
+  display: flex;
+  align-items: baseline; /* 🔥 ESSA É A CHAVE */
+  gap: 8px;
+}
+
+.icon {
+  font-size: 16px;
+  position: relative;
+  top: 1px; /* ajuste fino (pode testar 0, 1 ou 2px) */
+}
+
 .footer-legal {
   display: flex;
   justify-content: space-between;
   padding-top: 40px;
   font-size: 10px;
-  color: #8a9686; /* Cinza esverdeado */
+  color: #8a9686;
 }
 
 /* RESPONSIVIDADE */
