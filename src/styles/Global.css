@@ -1,0 +1,44 @@
+.home-container {
+  min-height: 100vh;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--texto-principal);
+}
+
+/* textos padrão */
+p { 
+  font-size: 17px; 
+  color: var(--texto-suave); 
+  margin-bottom: 40px; 
+  line-height: 1.8; 
+  max-width: 500px;
+  border-left: 3px solid var(--verde-fundo);
+  padding-left: 25px;
+}
+
+h1 { 
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 62px; 
+  color: var(--verde-escuro); 
+  margin: 0 0 30px; 
+  line-height: 1.1; 
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* RESPONSIVIDADE GLOBAL */
+@media (max-width: 1100px) {
+  h1 { font-size: 50px; }
+}
+
+@media (max-width: 768px) {
+  h1 { font-size: 42px; }
+
+  p {
+    border-left: none;
+    padding-left: 0;
+    margin: 0 auto 40px;
+  }
+}

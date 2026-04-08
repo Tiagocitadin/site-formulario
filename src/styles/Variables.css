@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Montserrat:wght@300;400;600;700&display=swap');
+
+:root {
+  --verde-escuro: #4A5844;
+  --verde-claro: #93A384;
+  --verde-fundo: #F1F4F0;
+  --texto-principal: #2c2c2c;
+  --texto-suave: #555555;
+}

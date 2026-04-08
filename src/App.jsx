@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import './App.css';
-import Home from './Home';
+import Home from './pages/Home';
 
-import Dados from './Components/Dados';
-import Quiz from './Components/Quiz';
-import Final from './Components/Final';
+import Dados from './components/Dados';
+import Quiz from './components/Quiz';
+import Final from './components/Final';
 
 import { perguntas } from './Data/Pergunta';
 import { enviarDados } from './Services/envioService';

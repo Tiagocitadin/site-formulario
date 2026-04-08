@@ -1,0 +1,35 @@
+.home-nav {
+  padding: 25px 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--verde-fundo);
+}
+
+.logo { 
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600; 
+  font-size: 30px; 
+  color: var(--verde-escuro); 
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.nav-link { 
+  text-decoration: none; 
+  color: var(--texto-principal); 
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-link:hover {
+  color: var(--verde-claro);
+  border-bottom: 2px solid var(--verde-claro);
+}

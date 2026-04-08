@@ -1,0 +1,92 @@
+.home-footer {
+  background-color: var(--verde-fundo);
+  padding: 100px 10% 40px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1.5fr;
+  margin-bottom: 80px;
+  gap: 40px;
+  align-items: start; /* Alinha o topo das duas colunas */
+}
+
+/* Títulos (PROPÓSITO e COMEÇAR MINHA JORNADA) */
+.footer-label {
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--verde-claro);
+  font-weight: 700;
+  margin-bottom: 10px;
+  display: block;
+  text-align: left;
+  padding: 0 !important;
+  margin-left: 0 !important;
+}
+
+.footer-block.contact p {
+  margin-bottom: 0; 
+}
+
+.manifesto p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-style: italic;
+  color: var(--verde-escuro);
+  text-align: left;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+/* CONTATO (Coluna da Direita) */
+.footer-block.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinha os itens (ícone + texto) à esquerda */
+  text-align: left;
+  padding-left: 0 !important; /* Remove qualquer recuo da coluna */
+  margin-left: 0 !important;
+}
+
+.contact-item {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  text-align: left;
+  justify-content: flex-start;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+.icon {
+  font-size: 16px;
+  position: relative;
+  top: 1px;
+}
+
+/* LEGAL */
+.footer-legal {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 40px;
+  font-size: 10px;
+  color: #8a9686;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-label, 
+  .manifesto p, 
+  .footer-block.contact, 
+  .contact-item {
+    text-align: left !important;
+    align-items: flex-start !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+}
