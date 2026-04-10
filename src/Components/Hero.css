@@ -10,12 +10,45 @@
 .home-text { 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
-/* BOTÃO */
+/* VÍDEO DO YOUTUBE (RESPONSIVO) */
+.home-video-wrapper {
+  position: relative;
+  max-width: 500px;
+  width: 100%;
+  margin-bottom: 35px; /* Espaço para o botão abaixo */
+}
+
+.video-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%; /* Proporção 16:9 */
+  position: relative;
+  height: 0;
+  border-radius: 15px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.video-responsive iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  border: none;
+}
+
+.video-label {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  z-index: 2;
+}
+
+/* BOTÃO E AÇÕES */
 .home-actions-top {
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -77,30 +110,99 @@
   background: var(--verde-claro);
 }
 
-/* VÍDEO */
-.home-video-wrapper {
-  position: relative;
-  max-width: 500px;
+/* TEXTO E DESCRIÇÃO */
+.description-p {
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 30px;
 }
 
-.home-video {
-  width: 100%;
-}
 
-.video-label {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-}
-
-/* IMAGEM */
+/* IMAGEM LATERAL */
 .home-image {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    flex-direction: column; /* Coloca o texto acima da foto */
+    align-items: center;
+    gap: 30px; /* Espaçamento entre o texto e a foto */
+    
+}
+
+.image-intro-area {
+    text-align: center;
+    max-width: 80%; /* Evita que o texto fique muito largo */
+}
+
+.intro-phrase {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--verde-escuro);
+    font-weight: 500;
+    margin-bottom: 20px; /* Espaço entre a frase e o nome */
+    position: relative;
+    display: inline-block;
+}
+
+/* Um toque visual sutil (Opcional): Uma linha bem clarinha */
+.intro-phrase::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 1px;
+    background: rgba(74, 88, 68, 0.2); /* Linha divisória bem suave */
+}
+
+/* Estilo do nome e cargo que já existe, mas centralizado */
+.image-intro {
+    text-align: center;
+}
+
+.image-intro span {
+    display: block;
+    font-family: 'Cursive', serif; /* Use a fonte de assinatura */
+    font-size: 24px;
+    color: var(--verde-escuro);
+}
+
+.image-intro p {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--verde-claro);
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+/* Estilo da foto arredondada para combinar */
+.home-image img {
+    max-width: 420px;
+    border-radius: 20px; /* Arredondado igual ao vídeo */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+/* Responsividade: No celular, o texto se ajusta */
+@media (max-width: 768px) {
+    .home-image {
+        padding-top: 20px;
+    }
+    
+    .intro-phrase {
+        font-size: 14px;
+    }
+}
+
+.home-image img {
+    max-width: 420px;
+    border-radius: 20px; /* Bordas arredondadas combinam com o vídeo */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
 
 .home-image img {
   max-width: 420px;
+  width: 100%;
+  height: auto;
 }
 
 /* RESPONSIVO */
@@ -108,9 +210,24 @@
   .home-content {
     grid-template-columns: 1fr;
     text-align: center;
+    padding: 40px 5%;
+    gap: 50px;
   }
 
   .home-text {
     align-items: center;
   }
+
+  .home-actions-top {
+    align-items: center;
+  }
+
+  .tagline {
+    padding-left: 0;
+  }
+
+  .tagline::before {
+    display: none;
+  }
+ 
 }
